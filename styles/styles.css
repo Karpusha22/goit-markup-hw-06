@@ -832,6 +832,10 @@ ul {
 }
 /* LOGO END */
 
+.main-footer :focus {
+  color: var(--accent);
+  cursor: pointer;
+}
 /* footer info */
 
 .footer-address {
