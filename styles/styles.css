@@ -47,6 +47,17 @@ body {
   color: var(--maintext);
 }
 
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
 /* Social Links Icons */
 .social-list {
   display: flex;
@@ -322,6 +333,10 @@ ul {
   position: absolute;
   top: 50%;
   left: 50%;
+  padding-left: 39px;
+  padding-right: 39px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 
   width: 528px;
   height: 581px;
@@ -343,8 +358,8 @@ ul {
   letter-spacing: 0.03em;
   color: var(--secondarytext);
 
-  margin-top: 40px;
-  margin-left: auto;
+  /* margin-top: 40px;
+  margin-left: auto; */
   margin-bottom: 12px;
 }
 
@@ -352,7 +367,7 @@ ul {
   display: flex;
   flex-direction: column;
   width: 448px;
-  margin-left: 46px;
+  /* margin-left: 46px; */
   margin-bottom: 10px;
   /* outline: 1px solid tomato; */
 }
@@ -407,6 +422,7 @@ ul {
 .form-icon {
   position: absolute;
   display: inline-block;
+
   fill: #212121;
   left: 12px;
   top: 50%;
@@ -418,7 +434,7 @@ ul {
 }
 
 .form-checkbox {
-  margin-left: 52px;
+  /* margin-left: 52px; */
   margin-top: 20px;
   font-size: 14px;
 }
@@ -453,13 +469,18 @@ ul {
 .checkbox:checked + .checkbox-icon {
   background-color: var(--accent);
   border-color: var(--accent);
-  background-image: url(../images/checkbox.svg);
+  background-image: url(../images/icon-checkbox.svg);
   background-size: contain;
   background-origin: border-box;
+  fill: var(--white);
 
   transition-property: background-color;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 250ms;
+}
+
+.checkbox:focus ~ .checkbox-icon {
+  border-color: var(--accent);
 }
 
 .checkbox-link {
@@ -498,19 +519,26 @@ ul {
 
 .closebtn {
   position: absolute;
-  align-items: center;
   right: 8px;
   top: 8px;
-  width: 33px;
-  height: 33px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  border: none;
 
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: var(--white);
-  background-image: url(../images/close-black.svg);
-  background-repeat: no-repeat;
-  background-position: center;
+  background-color: transparent;
+}
+
+.close-icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.closebtn:focus,
+.closebtn:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 .main-button:focus,
@@ -825,8 +853,8 @@ ul {
   cursor: pointer;
 }
 
-.footer-item:hover .link,
-.footer-item:focus .link {
+.footer-item:hover,
+.footer-item a:focus {
   color: var(--accent);
   cursor: pointer;
 }
@@ -929,13 +957,15 @@ ul {
 
 .subscribe-form {
   width: 570px;
-  margin-left: 93px;
+  margin-right: auto;
+  margin-left: 105px;
 }
 
 .subscribe {
   display: flex;
   align-items: center;
 }
+
 .subscribe-title {
   display: block;
   font-weight: bold;
@@ -965,6 +995,14 @@ ul {
   line-height: 1.25;
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.6);
+
+  transition-property: border;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+}
+
+.subscribe input:focus {
+  border: 1px solid var(--accent);
 }
 
 .subscribe-button {
@@ -1006,10 +1044,8 @@ ul {
   align-items: center;
   width: 24px;
   height: 24px;
-  fill: var(--white);
-  background-image: url(../images/send.svg);
-  background-size: contain;
 
+  fill: var(--white);
   align-items: baseline;
   top: 50%;
   transform: translateY(-50%);
